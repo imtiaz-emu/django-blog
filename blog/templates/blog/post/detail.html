@@ -25,6 +25,22 @@
         <p>There are no comments yet.</p>
     {% endfor %}
 
+    <h2>Similar posts</h2>
+    <div class="row">
+        {% for similar_post in similar_posts %}
+            <div class="similar_post col-lg-3">
+                <h4><a href="{{ similar_post.get_absolute_url }}">{{ similar_post.title }}</a></h4>
+
+                <p class="info">
+                    Posted by {{ similar_post.author }}
+                </p>
+            </div>
+        {% empty %}
+            <p>There are no similar_posts</p>
+        {% endfor %}
+    </div>
+
+
     {% if new_comment %}
         <h2>Your comment has been added.</h2>
     {% else %}
@@ -35,4 +51,6 @@
             <p><input type="submit" value="Add comment"></p>
         </form>
     {% endif %}
+
+
 {% endblock %}
